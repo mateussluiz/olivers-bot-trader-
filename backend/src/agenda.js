@@ -45,7 +45,7 @@ async function runSchedule(id) {
         if (!isLaunch && !isPingAutomation)
             await automationsRepository.updateAutomation(id, { isActive: false });
 
-        if (LOGS || automation.logs) logger('A:' + id, `The Scheduled Automation #${id} has fired at ${new Date()}!\n${JSON.stringify(result)}`);
+        if (LOGS || automation.logs) logger('A:' + id, `The Scheduled Automation #${id} foi executado at ${new Date()}!\n${JSON.stringify(result)}`);
     } catch (err) {
         console.error(err);
     }

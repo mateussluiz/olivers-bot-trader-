@@ -126,7 +126,7 @@ module.exports = class Beholder {
     async sendEmail(settings, user, automation, subject) {
         if (!user.email) throw new Error(`This user doesn't have email.`);
 
-        await require('./utils/email')(settings, automation.name + ' has fired!', user.email, subject);
+        await require('./utils/email')(settings, automation.name + ' foi executado!', user.email, subject);
         if (automation.logs) logger('A:' + automation.id, `E-mail sent!`);
         return { text: `E-mail sent from automation '${automation.name}'`, type: 'success' };
     }
@@ -721,7 +721,7 @@ module.exports = class Beholder {
     async sendTelegram(settings, user, automation) {
         if (!user.telegramChat) throw new Error(`This user doesn't have Telegram Chat ID.`);
 
-        await require('./utils/telegram')(settings, automation.name + ' has fired!', user.telegramChat);
+        await require('./utils/telegram')(settings, automation.name + ' foi executado!', user.telegramChat);
         if (automation.logs) logger('A:' + automation.id, `Telegram sent!`);
         return { text: `Telegram sent from automation '${automation.name}'`, type: 'success' };
     }

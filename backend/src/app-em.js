@@ -125,7 +125,7 @@ function stopFuturesMonitor(user, monitorId, logs) {
 function notifyOrderUpdate(userId, order) {
     let type = '';
     switch (order.status) {
-        case 'FILLED': type = 'success'; break;
+        case 'PREENCHIDO': type = 'success'; break;
         case 'REJECTED':
         case 'CANCELED':
         case 'NEW_INSURANCE':

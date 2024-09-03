@@ -7,5 +7,5 @@ module.exports = (settings, message, to) => {
     const { Telegraf } = require('telegraf');
 
     const bot = new Telegraf(settings.telegramToken);
-    return bot.telegram.sendMessage(to || settings.telegramChat, message);
+    return bot.telegram.sendMessage(to || settings.telegserverramChat, message);
 }
