@@ -87,12 +87,6 @@ function Settings() {
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <div className="form-group">
-                                        <label htmlFor="telegramChat">Telegram Chat ID</label><a href={"https://t.me/" + settings.telegramBot} className="badge bg-secondary py-1 ms-1">?</a>
-                                        <input className="form-control" id="telegramChat" type="text" placeholder="Enter the Telegram Chat ID" value={settings.telegramChat || ''} onChange={onInputChange} />
-                                    </div>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <div className="form-group">
                                         <label htmlFor="limit">Limit Plan</label>
                                         <input className="form-control" id="limit" type="text" disabled={true} value={settings.limit ? settings.limit.name : ''} />
                                     </div>
@@ -152,6 +146,72 @@ function Settings() {
                                     )
                                     : <></>
                             }
+                            <div className="row">
+                                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap">
+                                    <div className="col-sm-3">
+                                        <button className="btn btn-gray-800 mt-2 animate-up-2" type="button" onClick={onFormSubmit}>Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-body border-0 shadow mb-4">
+                            <h2 className="h5 my-4">Alert Settings</h2>
+                            <div className="row">
+                                <div className="col-12 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="sendGridKey">SendGrid Api Key</label>
+                                        <input className="form-control" id="sendGridKey" type="password" placeholder="Enter the SendGrid API Key" defaultValue={settings.sendGridKey} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="twilioPhone">Twilio Phone</label>
+                                        <input className="form-control" id="twilioPhone" type="text" placeholder="Enter the Twilio Phone Number" defaultValue={settings.twilioPhone} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="twilioSid">Twilio SID</label>
+                                        <input className="form-control" id="twilioSid" type="text" placeholder="Enter the Twilio SID" defaultValue={settings.twilioSid} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="twilioToken">Twilio Token</label>
+                                        <input className="form-control" id="twilioToken" type="password" placeholder="Enter the Twilio Token" defaultValue={settings.twilioToken} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="telegramBot">Telegram Bot Name</label>
+                                        <input className="form-control" id="telegramBot" type="text" placeholder="Enter the Telegram Bot Name" defaultValue={settings.telegramBot} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="telegramToken">Telegram Bot Token</label>
+                                        <input className="form-control" id="telegramToken" type="password" placeholder="Enter the Telegram Bot Token" defaultValue={settings.telegramToken} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <div className="form-group">
+                                        <label htmlFor="telegramChat">Telegram Chat ID</label><a href={"https://t.me/" + settings.telegramBot} className="badge bg-secondary py-1 ms-1">?</a>
+                                        <input className="form-control" id="telegramChat" type="text" placeholder="Enter the Telegram Chat ID" value={settings.telegramChat || ''} onChange={onInputChange} />
+                                    </div>
+                                </div>
+                            </div>
                             <div className="row">
                                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap">
                                     <div className="col-sm-3">

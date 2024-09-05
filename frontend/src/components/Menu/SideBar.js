@@ -55,7 +55,7 @@ function SideBar() {
                                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                                     </svg>
                                 </span>
-                                <span className="sidebar-text">Intelligence</span>
+                                <span className="sidebar-text">Inteligência</span>
                             </span>
                             <span className="link-arrow">
                                 <svg className="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -66,13 +66,13 @@ function SideBar() {
                         <div className="multi-level collapse" role="list"
                             id="submenu-dashboard" aria-expanded="false">
                             <ul className="flex-column nav">
-                                <SideBarItem to="/dashboard" text="Dashboard" />
-                                <SideBarItem to="/reports" text="Reports" />
-                                <SideBarItem to="/wallet" text="Wallet" />
+                                <SideBarItem to="/dashboard" text="Painel" />
+                                <SideBarItem to="/reports" text="Relatórios" />
+                                <SideBarItem to="/wallet" text="Carteira" />
                             </ul>
                         </div>
                     </li>
-                    <SideBarItem to="/orders" text={localStorage.getItem("hasFutures") === 'true' ? "Orders & Positions" : "Orders"}>
+                    <SideBarItem to="/orders" text={localStorage.getItem("hasFutures") === 'true' ? "Ordens & Posições" : "Orders"}>
                         <svg className="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
                             <path fillRule="evenodd"
@@ -80,10 +80,10 @@ function SideBar() {
                                 clipRule="evenodd"></path>
                         </svg>
                     </SideBarItem>
-                    <SideBarItem to="/strategies" text="Strategies">
+                    <SideBarItem to="/strategies" text="Estratégia">
                         <svg className="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" /></svg>
                     </SideBarItem>
-                    <SideBarItem to="/automations" text="Automations">
+                    <SideBarItem to="/automations" text="Automações">
                         <svg className="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -98,7 +98,7 @@ function SideBar() {
                                         <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                                     </svg>
                                 </span>
-                                <span className="sidebar-text">Action Templates</span>
+                                <span className="sidebar-text">Modelos de Ações</span>
                             </span>
                             <span className="link-arrow">
                                 <svg className="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -108,13 +108,13 @@ function SideBar() {
                         </span>
                         <div className="multi-level collapse" role="list" id="submenu-templates">
                             <ul className="flex-column nav">
-                                <SideBarItem to="/orderTemplates" text="Order" />
-                                <SideBarItem to="/webhooks" text="WebHook" />
-                                <SideBarItem to="/withdrawTemplates" text="Withdraw" />
+                                <SideBarItem to="/orderTemplates" text="Ordem" />
+                                <SideBarItem to="/webhooks" text="Gancho de rede" />
+                                <SideBarItem to="/withdrawTemplates" text="Retirar" />
                             </ul>
                         </div>
                     </li>
-                    <SideBarItem to="/monitors" text="Monitors">
+                    <SideBarItem to="/monitors" text="Monitores">
                         <svg className="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
                         </svg>
@@ -130,7 +130,7 @@ function SideBar() {
                                             clipRule="evenodd"></path>
                                     </svg>
                                 </span>
-                                <span className="sidebar-text">Settings</span>
+                                <span className="sidebar-text">Configurações</span>
                             </span>
                             <span className="link-arrow">
                                 <svg className="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -140,13 +140,13 @@ function SideBar() {
                         </span>
                         <div className="multi-level collapse" role="list" id="submenu-settings">
                             <ul className="flex-column nav">
-                                <SideBarItem to="/settings" text="Personal" />
-                                <SideBarItem to="/symbols" text="Symbols" />
+                                <SideBarItem to="/settings" text="Dados" />
+                                <SideBarItem to="/symbols" text="Símbolos" />
                             </ul>
                         </div>
                     </li>
                     <li role="separator" className="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-                    <SideBarItem to="/" text="Logout" onClick={onLogoutClick}>
+                    <SideBarItem to="/" text="Sair" onClick={onLogoutClick}>
                         <svg className="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">

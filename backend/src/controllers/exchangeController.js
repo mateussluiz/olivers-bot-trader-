@@ -11,8 +11,8 @@ async function loadBalance(userId, fiat, isFuture = false) {
     const user = await usersRepository.getUserDecrypted(userId);
     if (!user) return null;
 
-    if (!isFuture && (!user.accessKey || !user.secretKey)) throw new Error(`Go to settings and fill your data.`);
-    if (isFuture && (!user.futuresKey || !user.futuresSecret)) throw new Error(`Go to settings and fill your data.`);
+    if (!isFuture && (!user.accessKey || !user.secretKey)) throw new Error(`Entre em configurações e preencha seus dados!`);
+    if (isFuture && (!user.futuresKey || !user.futuresSecret)) throw new Error(`Entre em configurações e preencha seus dados!`);
 
     const exchange = new Exchange(user, isFuture);
     let info;
@@ -173,7 +173,7 @@ async function getFuturesPositions(req, res, next) {
     if (!user) return res.sendStatus(404);
 
     user = user.get({ plain: true });
-    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Go to settings and fill your data.`);
+    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Entre em configurações e preencha seus dados!`);
 
     try {
         const exchange = new Exchange(user, true);
@@ -197,7 +197,7 @@ async function closeAllFuturesPositions(req, res, next) {
     if (!user) return res.sendStatus(404);
 
     user = user.get({ plain: true });
-    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Go to settings and fill your data.`);
+    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Entre em configurações e preencha seus dados!`);
 
     try {
         const exchange = new Exchange(user, true);
@@ -238,7 +238,7 @@ async function closeFuturesPosition(req, res, next) {
     if (!user) return res.sendStatus(404);
 
     user = user.get({ plain: true });
-    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Go to settings and fill your data.`);
+    if (!user.futuresKey || !user.futuresSecret) return res.status(400).json(`Entre em configurações e preencha seus dados!`);
 
     try {
         const exchange = new Exchange(user, true);
@@ -268,7 +268,7 @@ async function updateFuturesPosition(req, res, next) {
 
     user = user.get({ plain: true });
     if (!user.futuresKey || !user.futuresSecret)
-        return res.status(400).json(`Go to settings and fill your data.`);
+        return res.status(400).json(`Entre em configurações e preencha seus dados!`);
 
     try {
         const exchange = new Exchange(user, true);

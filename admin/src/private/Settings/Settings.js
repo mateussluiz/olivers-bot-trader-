@@ -105,7 +105,7 @@ function Settings() {
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-body border-0 shadow mb-4">
-                            <h2 className="h5 my-4">Alert Settings</h2>
+                            <h2 className="h5 my-4">Alert Settings(apagar)</h2>
                             <div className="row">
                                 <div className="col-12 mb-3">
                                     <div className="form-group">
