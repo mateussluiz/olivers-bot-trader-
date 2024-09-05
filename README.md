@@ -1,5 +1,5 @@
-# Hydra 3.2
-A Multi-tenant TraderBot platform (SaaS).
+Olivers bot trader
+Uma plataforma TraderBot 
 
 ## backend
 The Hydra 3.2 backend.
