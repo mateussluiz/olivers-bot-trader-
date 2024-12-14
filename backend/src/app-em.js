@@ -35,7 +35,7 @@ function convertTicker(ticker) {
 function startTickerMonitor(monitorId, broadcastLabel, logs) {
     if (!anonymousExchange) return new Error('Exchange Monitor not initialized yet.');
     anonymousExchange.tickerStream(async (markets) => {
-        if (logs) logger('M:' + monitorId, markets);
+        if (logs) logger('M_' + monitorId, markets);
 
         try {
             markets.map(mkt => hydra.updateMemory(mkt.symbol, indexKeys.TICKER, null, convertTicker(mkt)));
@@ -54,17 +54,17 @@ function startTickerMonitor(monitorId, broadcastLabel, logs) {
             if (WSS) WSS.broadcast({ book: books });
             //fim simulação de book
         } catch (err) {
-            if (logs) logger('M:' + monitorId, err)
+            if (logs) logger('M_' + monitorId, err)
         }
     })
-    logger('M:' + monitorId, 'Ticker Monitor has started!');
+    logger('M_' + monitorId, 'Ticker Monitor has started!');
 }
 
 let book = [];
 function startBookMonitor(monitorId, broadcastLabel, logs) {
     if (!anonymousExchange) return new Error('Exchange Monitor not initialized yet.');
     anonymousExchange.bookStream(async (order) => {
-        if (logs) logger('M:' + monitorId, order);
+        if (logs) logger('M_' + monitorId, order);
 
         try {
             if (book.length === 200) {
@@ -75,10 +75,10 @@ function startBookMonitor(monitorId, broadcastLabel, logs) {
 
             hydra.updateMemory(order.symbol, indexKeys.BOOK, null, order);
         } catch (err) {
-            if (logs) logger('M:' + monitorId, err);
+            if (logs) logger('M_' + monitorId, err);
         }
     })
-    logger('M:' + monitorId, 'Book Monitor has started!');
+    logger('M_' + monitorId, 'Book Monitor has started!');
 }
 
 async function loadWallet(user, executeAutomations = true) {
@@ -215,13 +215,13 @@ async function processChartData(monitorId, symbol, indexes, interval, ohlc, logs
 
         try {
             const calc = execCalc(indexName, ohlc, ...params);
-            if (logs) logger('M:' + monitorId, `${index}_${interval} calculated: ${JSON.stringify(calc.current ? calc.current : calc)}`);
+            if (logs) logger('M_' + monitorId, `${index}_${interval} calculated: ${JSON.stringify(calc.current ? calc.current : calc)}`);
 
             calculatedIndexes[index] = calc;
             if (!executeAutomations) executeAutomations = !!calc.current;
         } catch (err) {
-            logger('M:' + monitorId, `Exchange Monitor => Can't calc the index ${index}:`);
-            logger('M:' + monitorId, err);
+            logger('M_' + monitorId, `Exchange Monitor => Can't calc the index ${index}:`);
+            logger('M_' + monitorId, err);
             return false;
         }
     })
@@ -262,7 +262,7 @@ function startChartMonitor(userId, monitorId, symbol, interval, indexes, broadca
             isComplete: true
         };
 
-        if (logs) logger('M:' + monitorId, lastCandle);
+        if (logs) logger('M_' + monitorId, lastCandle);
 
         try {
             hydra.updateMemory(symbol, indexKeys.PREVIOUS_CANDLE, interval, {
@@ -278,17 +278,17 @@ function startChartMonitor(userId, monitorId, symbol, interval, indexes, broadca
 
             processChartData(monitorId, symbol, indexes, interval, ohlc, logs);
         } catch (err) {
-            if (logs) logger('M:' + monitorId, err);
+            if (logs) logger('M_' + monitorId, err);
         }
     })
-    logger('M:' + monitorId, `Chart Monitor has started for ${symbol}_${interval}!`);
+    logger('M_' + monitorId, `Chart Monitor has started for ${symbol}_${interval}!`);
 }
 
 function stopChartMonitor(monitorId, symbol, interval, indexes, logs) {
     if (!symbol) return new Error(`Can't stop a Chart Monitor without a symbol.`);
     if (!anonymousExchange) return new Error('Exchange Monitor not initialized yet.');
     anonymousExchange.terminateChartStream(symbol, interval);
-    if (logs) logger('M:' + monitorId, `Chart Monitor ${symbol}_${interval} stopped!`);
+    if (logs) logger('M_' + monitorId, `Chart Monitor ${symbol}_${interval} stopped!`);
 
     hydra.deleteMemory(symbol, indexKeys.LAST_CANDLE, interval);
 
@@ -315,38 +315,38 @@ function startMarkPriceMonitor(monitorId, interval, broadcastLabel, logs) {
     if (!anonymousExchange) throw new Error('Exchange Monitor not initialized yet!');
 
     anonymousExchange.markPriceStream(data => {
-        if (logs) logger('M:' + monitorId, JSON.stringify(data));
+        if (logs) logger('M_' + monitorId, JSON.stringify(data));
 
         try {
             if (WSS && broadcastLabel) WSS.broadcast({ [broadcastLabel]: data });
             data.map(obj => hydra.updateMemory(obj.symbol, indexKeys.MARK_PRICE, null, obj, true));
         }
         catch (err) {
-            logger('M:' + monitorId, err);
+            logger('M_' + monitorId, err);
         }
 
     }, interval)
 
-    logger('M:' + monitorId, `Mark Price Monitor has started!`);
+    logger('M_' + monitorId, `Mark Price Monitor has started!`);
 }
 
 function startLiquidationMonitor(monitorId, broadcastLabel, logs) {
     if (!anonymousExchange) throw new Error('Exchange Monitor not initialized yet!');
 
     anonymousExchange.liquidationStream(data => {
-        if (logs) logger('M:' + monitorId, JSON.stringify(data));
+        if (logs) logger('M_' + monitorId, JSON.stringify(data));
 
         try {
             if (WSS && broadcastLabel) WSS.broadcast({ [broadcastLabel]: data });
             hydra.updateMemory(data.symbol, indexKeys.LAST_LIQ, null, data, true);
         }
         catch (err) {
-            logger('M:' + monitorId, err);
+            logger('M_' + monitorId, err);
         }
 
     })
 
-    logger('M:' + monitorId, `Liquidation Monitor has started!`);
+    logger('M_' + monitorId, `Liquidation Monitor has started!`);
 }
 
 async function loadFuturesWalletAndPositions(user, executeAutomations = true, justPositions = false) {
